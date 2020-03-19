@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="height: 100%"></div>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js">
+    </script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js">
+    </script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option1 = {
+            title: {
+                text: '最大吞吐率（fps）',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['Theoretical_Throughput', 'Throughput']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ['64', '128', '256', '512', '1024', '1280', '1518']
+            }],
+            yAxis: [{
+                type: 'value',
+                name:"（fps）",
+            }],
+            series: [{
+                    name: 'Theoretical_Throughput',
+                    type: 'bar',
+                    data: [148809, 84459, 45289, 23496, 11973, 9615, 8127],
+                },
+                {
+                    name: 'Throughput',
+                    type: 'bar',
+                    data: [86021, 62212, 37289, 18920, 9001, 7219, 6151]
+                },
+
+            ]
+        };
+        option2 = {
+            title: {
+                text: '时延（μsec）',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['avg_latency', 'max_latency', 'min_latency']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ['64', '128', '256', '512', '1024', '1280', '1518']
+            }],
+            yAxis: [{
+                type: 'value',
+                name:"（μsec）"
+            }],
+            series: [{
+                    name: 'avg_latency',
+                    type: 'bar',
+                    data: [42.37,
+                        41.22,
+                        42.12,
+                        43.14,
+                        43.43,
+                        43.98,
+                        44.25
+                    ],
+                },
+                {
+
+
+
+
+                    name: 'max_latency',
+                    type: 'bar',
+                    data: [82.1,
+                        81.22,
+                        82.32,
+                        81.24,
+                        83.43,
+                        82.68,
+                        83.35
+                    ]
+                },
+                {
+                    name: 'min_latency',
+                    type: 'bar',
+                    data: [9.11,
+                        9.23,
+                        9.1,
+                        9.28,
+                        9.68,
+                        10.11,
+                        10.21
+                    ]
+                },
+
+
+
+            ]
+        };
+        option3 = {
+            title: {
+                text: '控制信道容量（%usage）',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['linear', 'ring']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ['100', '300', '500']
+            }],
+            yAxis: [{
+                type: 'value',
+                name:"(%usage)"
+            }],
+            series: [{
+                    name: 'linear',
+                    type: 'line',
+                    data: [34, 55, 81],
+
+                },
+                {
+                    name: 'ring',
+                    type: 'line',
+                    data: [35, 55, 81]
+                },
+
+            ]
+        };;
+        option4 = {
+            title: {
+                text: '流表查询时间（ms）',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['1', '100', '500']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            }],
+            yAxis: [{
+                type: 'value',
+                min:0.2,
+                name:"(ms)"
+            }],
+            series: [{
+                    name: '1',
+                    type: 'bar',
+                    data: [0.335,
+                        0.294,
+                        0.283,
+                        0.337,
+                        0.331,
+                        0.281,
+                        0.289,
+                        0.318,
+                        0.302,
+                        0.29
+
+                    ],
+                },
+                {
+                    name: '100',
+                    type: 'bar',
+                    data: [0.356,
+                        0.373,
+                        0.369,
+                        0.364,
+                        0.327,
+                        0.305,
+                        0.396,
+                        0.391,
+                        0.318,
+                        0.393
+                    ]
+                },
+                {
+                    name: '500',
+                    type: 'bar',
+                    data: [0.301,
+                        0.394,
+                        0.382,
+                        0.359,
+                        0.358,
+                        0.338,
+                        0.325,
+                        0.339,
+                        0.399,
+                        0.357
+
+                    ]
+                },
+
+
+
+            ]
+        };;
+        option5 = {
+            title: {
+                text: '流表收敛时间（ms）',
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['avg', 'max', 'min']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            }],
+            yAxis: [{
+                type: 'value',
+                min:2700,
+                max:3400,
+                splitNumber:3,
+                name:"（ms）"
+            }],
+            series: [{
+                    name: 'avg',
+                    type: 'bar',
+                    data: [3101.791,
+                        3112.707,
+                        3123.856,
+                        3107.867,
+                        3104.699,
+                        3120.36,
+                        3110.398,
+                        3095.811,
+                        3102.205,
+                        3104.901
+                    ],
+                },
+                {
+                    name: 'max',
+                    type: 'bar',
+                    data: [3242.111,
+                        3265.886,
+                        3285.984,
+                        3253.497,
+                        3248.168,
+                        3280.362,
+                        3257.423,
+                        3235.759,
+                        3249.3,
+                        3255.039
+                    ]
+                },
+                {
+                    name: 'min',
+                    type: 'bar',
+                    data: [2961.471,
+                        2959.529,
+                        2961.728,
+                        2962.238,
+                        2961.23,
+                        2960.357,
+                        2963.373,
+                        2955.863,
+                        2955.11,
+                        2954.764
+
+                    ]
+                },
+
+
+
+            ]
+        };;
+
+        option = option5
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+</body>
+
+</html>
